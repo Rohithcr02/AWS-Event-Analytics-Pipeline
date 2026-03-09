@@ -33,15 +33,14 @@ Although the project only required Silver tables to answer queries, I wanted to 
 1.87 GB Parquet output (Snappy compressed)
 12.7 hours of event data
 Event distribution: 50% views, 20% cart adds, 10% purchases, 10% removals, 10% searches
+
 # Key Engineering Decisions
-Parquet + Snappy over JSON + GZIP: Traded 14% larger files for 5-10x faster queries
-No Gold Layer: Cost analysis showed direct Parquet queries sufficient for query patterns
+Parquet and Snappy over JSON + GZIP: Traded 14% larger files for 5-10x faster queries
 DynamicFrame Sandwich: Leverages Glue bookmarks while using full PySpark capabilities
 Partition Discovery: MSCK REPAIR TABLE synchronizes Glue catalog with S3 partitions
 
 # Results
 First Run (validation):
-
 15 files, 8.5M events, 254 seconds
 Second Run (14 hours later):
 
